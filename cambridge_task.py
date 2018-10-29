@@ -1,14 +1,13 @@
 import csv
-import logging
 from psychopy import visual, core, event
 
 
 class Experiment(object):
 
     def __init__(self, type, pp, fps=60.0):
-        trials_fname = 'trial_structure/' + type + '.csv'
-        log_fname = 'logs/' + type + '_' + pp + '.csv'
-        self.stimuli_folder = 'stimuli/' + type + '/'
+        trials_fname = 'trial_structure/cambridge/' + type + '.csv'
+        log_fname = 'logs/cambridge/' + type + '_' + pp + '.csv'
+        self.stimuli_folder = 'stimuli/cambridge/' + type + '/'
         #self.win = visual.Window(fullscr=True)
         bgcolor = 'black' if type != 'cars' else 'white'
         txtcolor = 'white' if type != 'cars' else 'black'
