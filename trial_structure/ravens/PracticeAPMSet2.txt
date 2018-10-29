@@ -1,0 +1,7 @@
+Item	Part	Picture	Correct_Answer
+1	Practice	APM_I_01.gif	0
+2	Practice	APM_I_02.gif	0
+3	Practice	APM_I_03.gif	0
+4	Practice	APM_I_04.gif	0
+5	Practice	APM_I_05.gif	0
+6	Practice	APM_I_06.gif	0
