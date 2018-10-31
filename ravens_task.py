@@ -19,18 +19,30 @@ class Experiment(object):
         self.title.wrapWidth = 1.5
         self.title.setAutoLog()
         self.image = visual.ImageStim(self.win)
+        self.skipped = []
         with open(trials_fname, 'rU') as trial_file, open(log_fname, 'w') as log_file:
             trials = csv.DictReader(trial_file, delimiter='\t')
-            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't']
+            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't', 'skipped']
             log = csv.DictWriter(log_file, fieldnames=log_fields, delimiter='\t')
             log.writeheader()
             # do experiment
             for trial in trials:
                 self.clock.reset()
                 trial = self.present_trial(trial)
+                if trial['keypress'] == 'right':
+                    self.skipped.append(trial)
                 log.writerow(trial)
                 if self.expclock.getTime() > 20 * 60.0:
                     core.quit()
+            while len(self.skipped) > 0:
+                self.clock.reset()
+                trial = self.present_trial(self.skipped[0])
+                if trial['keypress'] == 'right':
+                    self.skipped.append(trial)
+                log.writerow(trial)
+                if self.expclock.getTime() > 20 * 60.0:
+                    core.quit()
+                self.skipped.pop(0)
 
 
     def present_trial(self, trial):
@@ -69,9 +81,9 @@ class Experiment(object):
         self.win.callOnFlip(self.clock.reset)
         self.win.flip()
         keys = event.waitKeys(keyList=['escape'] + trial['keyboard'].split(','), timeStamped=self.clock)
-        if keys[0][0] == 'escape':
-            core.quit()
         trial['keypress'], trial['RT'] = keys[0]
+        if trial['keypress'] == 'escape':
+            core.quit()
         if trial['keypress'] == trial['key']:
             trial['ACC'] = 1
         else:
@@ -84,10 +96,10 @@ class Experiment(object):
         self.image.draw()
         self.win.callOnFlip(self.clock.reset)
         self.win.flip()
-        keys = event.waitKeys(keyList=['escape'] + trial['keyboard'].split(','), timeStamped=self.clock)
-        if keys[0][0] == 'escape':
-            core.quit()
+        keys = event.waitKeys(keyList=['escape', 'right'] + trial['keyboard'].split(','), timeStamped=self.clock)
         trial['keypress'], trial['RT'] = keys[0]
+        if trial['keypress'] == 'escape':
+            core.quit()
         if trial['keypress'] == trial['key']:
             trial['ACC'] = 1
         else:
