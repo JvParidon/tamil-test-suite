@@ -4,47 +4,79 @@ from psychopy import visual, core, event
 
 class Experiment(object):
 
+
     def __init__(self, pp, fps=60.0):
-        trials_fname = 'trial_structure/ravens/ravens.tsv'
-        log_fname = 'logs/ravens/ravens_' + pp + '.tsv'
+        self.pp = pp
+        self.fps = fps
+        # set up file paths, etc.
+        self.trials_fname = 'trial_structure/ravens/ravens.tsv'
+        self.log_fname = 'logs/ravens/ravens_' + pp + '.tsv'
         self.stimuli_folder = 'stimuli/ravens/'
-        #self.win = visual.Window(fullscr=True)
+
+
+    def run(self):
+        # set up presentation window color, and size
         bgcolor = 'white'
         txtcolor = 'black'
-        self.frame_dur = 1.0 / fps
-        self.win = visual.Window((1200, 900), color=bgcolor)
-        self.clock = core.Clock()
-        self.expclock = core.Clock()
+        #self.win = visual.Window(fullscr=True, color=bgcolor)
+        self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
+
+        # set up timing related stuff
+        self.frame_dur = 1.0 / self.fps
+        self.clock = core.Clock()  # trial timer
+        self.expclock = core.Clock()  # whole experiment timer
+
+        # various stimulus presentation boxes for text and images
         self.title = visual.TextStim(self.win, pos=(0, .8), color=txtcolor)
         self.title.wrapWidth = 1.5
-        self.title.setAutoLog()
+        #self.title.setAutoLog()  # is this still necessary?
         self.image = visual.ImageStim(self.win)
+
+        # actually run the experiment routines
         self.skipped = []
-        with open(trials_fname, 'rU') as trial_file, open(log_fname, 'w') as log_file:
+        with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w') as log_file:
+            # read trial structure
             trials = csv.DictReader(trial_file, delimiter='\t')
+
+            # set up log file
             log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't', 'skipped']
             log = csv.DictWriter(log_file, fieldnames=log_fields, delimiter='\t')
             log.writeheader()
-            # do experiment
+
+            # present the trials
             for trial in trials:
-                self.clock.reset()
-                trial = self.present_trial(trial)
+                self.clock.reset()  # reset the trial clock
+                trial = self.present_trial(trial)  # present the trial
+
+                # check if the trial has been skipped, if so, put it in the repetition queue
                 if trial['keypress'] == 'right':
                     self.skipped.append(trial)
-                log.writerow(trial)
+
+                log.writerow(trial)  # log trial data
+
+                # check if the 20 minutes alotted for the Raven's have expired
                 if self.expclock.getTime() > 20 * 60.0:
                     core.quit()
+
+            # run the skipped trials again
             while len(self.skipped) > 0:
-                self.clock.reset()
-                trial = self.present_trial(self.skipped[0])
+                self.clock.reset()  # reset the trial clock
+                trial = self.present_trial(self.skipped[0])  # present first trial in the repetition queue
+
+                # requeue trial if it's skipped again
                 if trial['keypress'] == 'right':
                     self.skipped.append(trial)
-                log.writerow(trial)
+
+                log.writerow(trial)  # log trial data
+
+                # check if the 20 minutes alotted for the Raven's have expired
                 if self.expclock.getTime() > 20 * 60.0:
                     core.quit()
-                self.skipped.pop(0)
+
+                self.skipped.pop(0)  # remove repeated trial from the repetition queue
 
 
+    # select the appriopriate trial subroutine
     def present_trial(self, trial):
         type = trial['type']
         if type == 'message':
@@ -54,8 +86,10 @@ class Experiment(object):
         elif type == 'test':
             trial = self.test_trial(trial)
         else:
-            # LOG ERROR using logging module
+            # unknown trial type, return some kind of error?
             print('ERROR: unknown trial type')
+
+        # log experiment timer and return trial data
         trial['t'] = self.expclock.getTime()
         return trial
 
@@ -67,9 +101,9 @@ class Experiment(object):
         self.win.callOnFlip(self.clock.reset)
         self.win.flip()
         keys = event.waitKeys(keyList=['escape'] + trial['keyboard'].split(','), timeStamped=self.clock)
-        if keys[0][0] == 'escape':
-            core.quit()
         trial['keypress'], trial['RT'] = keys[0]
+        if trial['keypress'] == 'escape':
+            core.quit()
         self.expclock.reset()
         return trial
 
@@ -90,6 +124,7 @@ class Experiment(object):
             trial['ACC'] = 0
         return trial
 
+
     def test_trial(self, trial):
         # present instruction trial
         self.image.image = self.stimuli_folder + trial['picture']
@@ -108,7 +143,7 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    pp_num = raw_input('Participant number: ')
+    pp = raw_input('Participant number: ')
     pp_name = raw_input('Participant name: ')
     pp_age = raw_input('Participant age: ')
-    exp = Experiment(pp=pp_num)
+    Experiment(pp).run()

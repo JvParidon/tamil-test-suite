@@ -1,0 +1,24 @@
+./configure --enable-shared \
+            --with-system-ffi \
+            --with-system-expat \
+            --enable-unicode=ucs4 \
+            --prefix=/data/clusterfs/pol/pol-sub2vec/local/python2.7 \
+            LDFLAGS="-L/data/clusterfs/pol/pol-sub2vec/local/python2.7/extlib/lib -Wl,--rpath=/data/clusterfs/pol/pol-sub2vec/local/python2.7/lib -Wl,--rpath=/data/clusterfs/pol/pol-sub2vec/local/python2.7/extlib/lib" \
+            CPPFLAGS="-I/data/clusterfs/pol/pol-sub2vec/local/python2.7/extlib/include"
+
+
+./configure --enable-shared \
+            --with-system-ffi \
+            --with-system-expat \
+            --enable-unicode=ucs4 \
+            --prefix=/data/clusterfs/pol/pol-sub2vec/local/python3.7 \
+            LDFLAGS="-L/data/clusterfs/pol/pol-sub2vec/local/python3.7/extlib/lib -Wl,--rpath=/data/clusterfs/pol/pol-sub2vec/local/python3.7/lib -Wl,--rpath=/data/clusterfs/pol/pol-sub2vec/local/python3.7/extlib/lib" \
+            CPPFLAGS="-I/data/clusterfs/pol/pol-sub2vec/local/python3.7/extlib/include"
+
+
+CFLAGS="-I/data/clusterfs/pol/pol-sub2vec/.local/include/" \
+LDFLAGS="-L/data/clusterfs/pol/pol-sub2vec/.local/lib/" \
+pyenv install -v 3.7.1
+
+
+./config --prefix=/data/clusterfs/pol/pol-sub2vec/local --openssldir=/data/clusterfs/pol/pol-sub2vec/local/ssl

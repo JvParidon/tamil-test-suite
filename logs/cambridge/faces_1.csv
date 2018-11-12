@@ -1,0 +1,5 @@
+type,block,randomize,condition1,trialNo,stim1,key,ITI,presTime,stimFormat,title,content,trialText,button1,feedbackIncorrect,keyboard,keypress,RT,ACC,t
+test,2,yes,no_noise,23,B7_Bottomlit_Frontal,3,500,,.jpg,,,Which face is one of the six target faces?,,,1 2 3,2,0.3480257987976074,0,0.8824830055236816
+test,2,yes,no_noise,24,J_6_23_L_Pro,2,500,,.jpg,,,Which face is one of the six target faces?,,,1 2 3,2,0.4224050045013428,1,1.8134210109710693
+test,2,yes,no_noise,22,D5_Halflit_Frontal,3,500,,.jpg,,,Which face is one of the six target faces?,,,1 2 3,1,0.24128103256225586,0,2.563498020172119
+test,2,yes,no_noise,43,M_4_23_R_Pro,3,500,,.jpg,,,Which face is one of the six target faces?,,,1 2 3,2,0.17954683303833008,0,3.2669529914855957
