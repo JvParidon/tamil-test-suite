@@ -1,5 +1,13 @@
-type,block,randomize,condition1,trialNo,stim1,key,ITI,presTime,stimFormat,title,content,trialText,button1,feedbackIncorrect,keyboard,keypress,RT,ACC,t
-test,2,yes,no_noise,23,B7_Bottomlit_Frontal,3,500,,.jpg,,,Which face is one of the six target faces?,,,1 2 3,2,0.3480257987976074,0,0.8824830055236816
-test,2,yes,no_noise,24,J_6_23_L_Pro,2,500,,.jpg,,,Which face is one of the six target faces?,,,1 2 3,2,0.4224050045013428,1,1.8134210109710693
-test,2,yes,no_noise,22,D5_Halflit_Frontal,3,500,,.jpg,,,Which face is one of the six target faces?,,,1 2 3,1,0.24128103256225586,0,2.563498020172119
-test,2,yes,no_noise,43,M_4_23_R_Pro,3,500,,.jpg,,,Which face is one of the six target faces?,,,1 2 3,2,0.17954683303833008,0,3.2669529914855957
+type,block,randomize,condition1,trialNo,stim1,key,ITI,presTime,stimFormat,title,content,trialText,trialAudio,button1,feedbackIncorrect,keyboard,keypress,RT,ACC,t
+instructions,1,no,,,,,500,,,Cambridge Face Memory Test,,,,return,,,return,1.0731520652770996,,1.5983591079711914
+instructions,1,no,,,,,500,,,Practice,Memorize the face in the next three images.<br><br>A test will follow.<br><br>press ENTER to begin.,,memorizefollowingCFMT.wav,return,,,return,7.202666997909546,,9.324809074401855
+learn,1,no,,,bart_left,,500,3000,.jpg,,,Practice,,,,,,,,12.817269086837769
+learn,1,no,,,bart_straight,,500,3000,.jpg,,,Practice,,,,,,,,16.319966077804565
+learn,1,no,,,bart_right,,500,3000,.jpg,,,Practice,,,,,,,,19.817419052124023
+practice,1,no,,,pract_left,1,500,,.jpg,,,"Which face did you just view? There is only one correct answer. Press 1, 2 or 3",which_face_did_you_just_see.wav,,That is wrong! The correct response was 1,1 2 3,2,3.7962591648101807,0,27.156373023986816
+practice,1,no,,,pract_right,2,500,,.jpg,,,"Which face did you just view? There is only one correct answer. Press 1, 2 or 3",which_face_did_you_just_see.wav,,That is wrong! The correct response was 2,1 2 3,1,0.3513460159301758,0,31.05522608757019
+practice,1,no,,,pract_straight,2,500,,.jpg,,,"Which face did you just view? There is only one correct answer. Press 1, 2 or 3",which_face_did_you_just_see.wav,,That is wrong! The correct response was 2,1 2 3,3,0.42551302909851074,0,34.98978805541992
+instructions,1,no,,,,,500,,,,"These were the practice trials.<br><br>Great! Let's go on and do the actual test.<br><br>In this test, you will learn to recognize six people.<br><br>To begin memorizing the first face, press ENTER.",,endofpractCFMT.wav,return,,,return,13.02677297592163,,48.53925609588623
+learn,1,no,,,Bob_left_study,,500,3000,.jpg,,,Memorize,,,,,,,,52.03948402404785
+learn,1,no,,,Bob_frontal_study,,500,3000,.jpg,,,Memorize,,,,,,,,55.54333710670471
+learn,1,no,,,Bob_right_study,,500,3000,.jpg,,,Memorize,,,,,,,,59.039462089538574

@@ -1,5 +1,5 @@
 import csv
-from psychopy import visual, core, event
+from psychopy import core, visual, event
 
 
 class Experiment(object):

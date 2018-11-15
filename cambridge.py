@@ -1,6 +1,11 @@
 import csv
 import random
-from psychopy import visual, core, event
+#import soundfile as sf
+#import sounddevice as sd
+from psychopy import prefs
+prefs.general['audioLib'] = ['pygame']
+from psychopy import core, visual, event, sound
+print(sound.Sound)
 
 
 class Experiment(object):
@@ -14,6 +19,7 @@ class Experiment(object):
         self.trials_fname = 'trial_structure/cambridge/' + category + '.csv'
         self.log_fname = 'logs/cambridge/' + category + '_' + pp + '.csv'
         self.stimuli_folder = 'stimuli/cambridge/' + category + '/'
+        self.instructions_folder = 'instructions/cambridge/' + category + '/'
 
 
     def run(self):
@@ -30,6 +36,10 @@ class Experiment(object):
         # inter trial interval setup
         self.isi = core.StaticPeriod()
         self.isi.start(.5)
+
+        # set sound defaults
+        #sd.default.samplerate = 44100
+        #sd.default.channels = 2
 
         # various stimulus presentation boxes for text and images
         self.message = visual.TextStim(self.win, color=txtcolor)
@@ -48,8 +58,12 @@ class Experiment(object):
             log = csv.DictWriter(log_file, fieldnames=log_fields)
             log.writeheader()
 
+            # preload block and instructions
             blocks = {}
+            self.instructions = {}
             for trial in trials:
+                if (trial['trialAudio'] != '') and (trial['trialAudio'] not in self.instructions.keys()):
+                    self.instructions[trial['trialAudio']] = sound.Sound(self.instructions_folder + trial['trialAudio'])
                 if trial['block'] not in blocks.keys():
                     blocks[trial['block']] = [trial]
                 else:
@@ -96,6 +110,8 @@ class Experiment(object):
         self.win.callOnFlip(self.clock.reset)
         self.isi.complete()
         self.win.flip()
+        if trial['trialAudio'] != '':
+            self.instructions[trial['trialAudio']].play()
         keys = event.waitKeys(keyList=['escape'] + trial['button1'].split(' '), timeStamped=self.clock)
         trial['keypress'], trial['RT'] = keys[0]
         if trial['keypress'] == 'escape':
