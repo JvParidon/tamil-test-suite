@@ -1,13 +1,85 @@
 type,block,randomize,condition1,trialNo,stim1,key,ITI,presTime,stimFormat,title,content,trialText,trialAudio,button1,feedbackIncorrect,keyboard,keypress,RT,ACC,t
-instructions,1,no,,,,,500,,,Cambridge Face Memory Test,,,,return,,,return,1.0731520652770996,,1.5983591079711914
-instructions,1,no,,,,,500,,,Practice,Memorize the face in the next three images.<br><br>A test will follow.<br><br>press ENTER to begin.,,memorizefollowingCFMT.wav,return,,,return,7.202666997909546,,9.324809074401855
-learn,1,no,,,bart_left,,500,3000,.jpg,,,Practice,,,,,,,,12.817269086837769
-learn,1,no,,,bart_straight,,500,3000,.jpg,,,Practice,,,,,,,,16.319966077804565
-learn,1,no,,,bart_right,,500,3000,.jpg,,,Practice,,,,,,,,19.817419052124023
-practice,1,no,,,pract_left,1,500,,.jpg,,,"Which face did you just view? There is only one correct answer. Press 1, 2 or 3",which_face_did_you_just_see.wav,,That is wrong! The correct response was 1,1 2 3,2,3.7962591648101807,0,27.156373023986816
-practice,1,no,,,pract_right,2,500,,.jpg,,,"Which face did you just view? There is only one correct answer. Press 1, 2 or 3",which_face_did_you_just_see.wav,,That is wrong! The correct response was 2,1 2 3,1,0.3513460159301758,0,31.05522608757019
-practice,1,no,,,pract_straight,2,500,,.jpg,,,"Which face did you just view? There is only one correct answer. Press 1, 2 or 3",which_face_did_you_just_see.wav,,That is wrong! The correct response was 2,1 2 3,3,0.42551302909851074,0,34.98978805541992
-instructions,1,no,,,,,500,,,,"These were the practice trials.<br><br>Great! Let's go on and do the actual test.<br><br>In this test, you will learn to recognize six people.<br><br>To begin memorizing the first face, press ENTER.",,endofpractCFMT.wav,return,,,return,13.02677297592163,,48.53925609588623
-learn,1,no,,,Bob_left_study,,500,3000,.jpg,,,Memorize,,,,,,,,52.03948402404785
-learn,1,no,,,Bob_frontal_study,,500,3000,.jpg,,,Memorize,,,,,,,,55.54333710670471
-learn,1,no,,,Bob_right_study,,500,3000,.jpg,,,Memorize,,,,,,,,59.039462089538574
+instructions,1,no,,,,,500,,,Cambridge Face Memory Test,,,,return,,,return,46.4760160446167,,47.002492904663086
+instructions,1,no,,,,,500,,,Practice,Memorize the face in the next three images.<br><br>A test will follow.<br><br>press ENTER to begin.,,memorizefollowingCFMT.wav,return,,,return,37.4504451751709,,84.9769070148468
+learn,1,no,,,bart_left,,500,3000,.jpg,,,Practice,,,,,,,,88.47738599777222
+learn,1,no,,,bart_straight,,500,3000,.jpg,,,Practice,,,,,,,,91.97725081443787
+learn,1,no,,,bart_right,,500,3000,.jpg,,,Practice,,,,,,,,95.47831296920776
+practice,1,no,,,pract_left,1,500,,.jpg,,,"Which face did you just view? There is only one correct answer. Press 1, 2 or 3",which_face_did_you_just_see.wav,,That is wrong! The correct response was 1,1 2 3,1,48.06588888168335,1,144.04870700836182
+practice,1,no,,,pract_right,2,500,,.jpg,,,"Which face did you just view? There is only one correct answer. Press 1, 2 or 3",which_face_did_you_just_see.wav,,That is wrong! The correct response was 2,1 2 3,2,5.523005962371826,1,150.082279920578
+practice,1,no,,,pract_straight,2,500,,.jpg,,,"Which face did you just view? There is only one correct answer. Press 1, 2 or 3",which_face_did_you_just_see.wav,,That is wrong! The correct response was 2,1 2 3,2,2.921808958053589,1,153.51945781707764
+instructions,1,no,,,,,500,,,,"These were the practice trials.<br><br>Great! Let's go on and do the actual test.<br><br>In this test, you will learn to recognize six people.<br><br>To begin memorizing the first face, press ENTER.",,endofpractCFMT.wav,return,,,return,15.029911041259766,,169.06998300552368
+learn,1,no,,,Bob_left_study,,500,3000,.jpg,,,Memorize,,,,,,,,172.5717430114746
+learn,1,no,,,Bob_frontal_study,,500,3000,.jpg,,,Memorize,,,,,,,,176.07142090797424
+learn,1,no,,,Bob_right_study,,500,3000,.jpg,,,Memorize,,,,,,,,179.5703468322754
+test,1,no,learn,1,B1_Identical_Left,2,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,2,4.927399158477783,1,185.02319884300232
+test,1,no,learn,2,B2_Identical_Frontal,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,3,4.292582988739014,1,189.82112789154053
+test,1,no,learn,3,B3_Identical_Right,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,3,3.4385619163513184,1,193.7716088294983
+instructions,1,no,,,,,500,,,,Memorize the following face.<br><br>press ENTER.,,memorizefollowingCFMT.wav,return,,,return,7.373489856719971,,201.66735291481018
+learn,1,no,,,Dan_Left_Study,,500,3000,.jpg,,,Memorize,,,,,,,,205.15966701507568
+learn,1,no,,,Dan_frontal_study,,500,3000,.jpg,,,Memorize,,,,,,,,208.65965485572815
+learn,1,no,,,Dan_Right_Frontal,,500,3000,.jpg,,,Memorize,,,,,,,,212.16007590293884
+test,1,no,learn,4,D1_Identical_Left,2,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,2,4.145735025405884,1,216.82516980171204
+test,1,no,learn,5,D2_Identical_Frontal,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,3,4.750320911407471,1,222.0932149887085
+test,1,no,learn,6,D3_Identical_Right,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,3,6.475368022918701,1,229.0760018825531
+instructions,1,no,,,,,500,,,,Memorize the following face.<br><br>press ENTER.,,memorizefollowingCFMT.wav,return,,,return,12.40479588508606,,241.9974389076233
+learn,1,no,,,Jim_left,,500,3000,.jpg,,,Memorize,,,,,,,,245.4974009990692
+learn,1,no,,,Jim_front,,500,3000,.jpg,,,Memorize,,,,,,,,248.99843883514404
+learn,1,no,,,Jim_right,,500,3000,.jpg,,,Memorize,,,,,,,,252.49893379211426
+test,1,no,learn,7,J_1_Iden_L,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,2,6.240926027297974,0,259.24763798713684
+test,1,no,learn,8,J_2_Iden_Front,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,2,0.2546350955963135,0,260.01568388938904
+test,1,no,learn,9,J_3_Iden_R,1,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,2,0.21549391746520996,0,260.74960684776306
+instructions,1,no,,,,,500,,,,Memorize the following face.<br><br>press ENTER.,,memorizefollowingCFMT.wav,return,,,return,1.4039738178253174,,262.6640808582306
+learn,1,no,,,Matt_left_cropped,,500,3000,.jpg,,,Memorize,,,,,,,,266.1670928001404
+learn,1,no,,,Matt_front,,500,3000,.jpg,,,Memorize,,,,,,,,269.66707396507263
+learn,1,no,,,Matt_right_cropped,,500,3000,.jpg,,,Memorize,,,,,,,,273.16821694374084
+test,1,no,learn,10,M_1_Iden_L,2,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,1,1.0191679000854492,0,274.698853969574
+test,1,no,learn,11,M_2_Iden_Front,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,3,0.35448503494262695,1,275.5664269924164
+test,1,no,learn,12,M_3_Iden_R,1,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,2,0.26400208473205566,0,276.35253381729126
+instructions,1,no,,,,,500,,,,Memorize the following face.<br><br>press ENTER.,,memorizefollowingCFMT.wav,return,,,return,1.7386178970336914,,278.6003448963165
+learn,1,no,,,Nate_left_cropped,,500,3000,.jpg,,,Memorize,,,,,,,,282.10097789764404
+learn,1,no,,,Nate_front_cropped,,500,3000,.jpg,,,Memorize,,,,,,,,285.6034150123596
+learn,1,no,,,Nate_right_cropped,,500,3000,.jpg,,,Memorize,,,,,,,,289.1029260158539
+test,1,no,learn,13,N_1_Iden_L,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,1,0.9539439678192139,0,290.5695769786835
+test,1,no,learn,14,N_2_Iden_Front,1,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,2,0.2958948612213135,0,291.38665080070496
+test,1,no,learn,15,N_3_Iden_R,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,3,0.271312952041626,1,292.1675958633423
+instructions,1,no,,,,,500,,,,Memorize the following face.<br><br>press ENTER.,,memorizefollowingCFMT.wav,return,,,return,1.6136829853057861,,294.3040277957916
+learn,1,no,,,Zack_Left_cropped,,500,3000,.jpg,,,Memorize,,,,,,,,297.80451488494873
+learn,1,no,,,Zack_Front_cropped,,500,3000,.jpg,,,Memorize,,,,,,,,301.30489683151245
+learn,1,no,,,Zack_Right_Cropped,,500,3000,.jpg,,,Memorize,,,,,,,,304.80612683296204
+test,1,no,learn,16,Z_1_Iden_L,1,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,2,4.459185838699341,0,309.7698049545288
+test,1,no,learn,17,Z_2_Iden_Front,3,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,3,0.38596010208129883,1,310.6730649471283
+test,1,no,learn,18,Z_3_Iden_R,1,500,,.jpg,,,Which face did you just view?,which_face_did_you_just_see.wav,,,1 2 3,2,0.2968180179595947,0,311.48907589912415
+instructions,1,no,,,,,500,,,,Next you will review the same six people for 20 seconds.<br><br>press ENTER.,,,return,,,return,4.485935211181641,,316.4881238937378
+learn,1,no,,,AA_Review_image,,500,20000,.jpg,,,Review the faces (20 seconds),reviewCFMT.wav,,,,,,,336.9941029548645
+instructions,1,no,,,,,500,,,,"Now your memory of these faces will be tested.<br><br>In the remaining trials, the correct answer can be any of the six faces.<br><br>The incorrect faces are sometimes very similar to the target faces, so be sure to look at each face prior to answering.<br><br>press ENTER.",,,return,,,return,4.654577016830444,,342.1576449871063
+test,2,yes,no_noise,23,B7_Bottomlit_Frontal,3,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,4.943036079406738,0,347.6085889339447
+test,2,yes,no_noise,24,J_6_23_L_Pro,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,2.067655086517334,1,350.19442486763
+test,2,yes,no_noise,22,D5_Halflit_Frontal,3,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,1.244070053100586,0,351.9597089290619
+test,2,yes,no_noise,43,M_4_23_R_Pro,3,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,2.852519989013672,0,355.3289499282837
+test,2,yes,no_noise,33,Z_4_23_Pro_R,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,1,2.6297149658203125,0,358.4791958332062
+test,2,yes,no_noise,35,M_7_Front_Bot,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,1,0.0466609001159668,0,359.04539585113525
+test,2,yes,no_noise,30,M_8_13_R_Pro_dark,3,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,1,0.09649419784545898,0,359.66208600997925
+test,2,yes,no_noise,39,B6_23_pro_L,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,1,0.007526874542236328,1,360.1778709888458
+test,2,yes,no_noise,29,N_4_23_R_Pro,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,1,0.08396100997924805,0,360.7797269821167
+test,2,yes,no_noise,26,Z_5_Front_Half,3,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,1,0.09002304077148438,0,361.3771698474884
+test,2,yes,no_noise,47,N_6_23_L_Pro,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,1,0.09811115264892578,1,361.99602484703064
+test,2,yes,no_noise,34,D8_13_Profile_R,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,1,0.136948823928833,0,362.64520287513733
+test,2,yes,no_noise,40,Z_8_13_Pro_R_dark,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,1,0.00964808464050293,0,363.162230014801
+test,2,yes,no_noise,31,J_5_Front_Halflit,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,1.1884069442749023,1,364.8605418205261
+test,2,yes,no_noise,32,N_7_Front_Bot,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.23745989799499512,0,365.6127579212189
+test,2,yes,no_noise,36,B4_23_pro_ri,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.016067028045654297,1,366.14657378196716
+test,2,yes,no_noise,20,N_8_13_R_Pro_dark,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.010594844818115234,1,366.67753887176514
+test,2,yes,no_noise,41,J_4_23_R_Pro,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.1565380096435547,1,367.34626293182373
+test,2,yes,no_noise,38,N_5_Front_Half,3,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.42792701721191406,0,368.27856492996216
+test,2,yes,no_noise,19,M_5_Front_Halflit,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.26074981689453125,0,369.06410789489746
+test,2,yes,no_noise,48,B5_halflit_frontal,3,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.3440690040588379,0,369.9108638763428
+test,2,yes,no_noise,44,J_8_13_r_pro_dark,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.09088397026062012,0,370.5123088359833
+test,2,yes,no_noise,25,D7_Bottomlit_Frontal,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.20330309867858887,0,371.2303228378296
+test,2,yes,no_noise,46,D4_23_profile_R,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.08594679832458496,0,371.8303790092468
+test,2,yes,no_noise,37,D6_23_Profile_L,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.17416000366210938,0,372.5121569633484
+test,2,yes,no_noise,45,Z_7_Front_Bot,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.02643299102783203,1,373.04695200920105
+test,2,yes,no_noise,28,J_7_Bottom_Lit,3,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.053781986236572266,0,373.61367678642273
+test,2,yes,no_noise,42,B8_13_pro_R_HS,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.07047605514526367,0,374.19676780700684
+test,2,yes,no_noise,27,M_6_23_L_Pro,2,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.031119108200073242,1,374.74778485298157
+test,2,yes,no_noise,21,Z_6_23_Pro_L,1,500,,.jpg,,,Which face is one of the six target faces?,testquestion_CFMT.wav,,,1 2 3,2,0.06499004364013672,0,375.3312358856201
+learn,3,no,,,AA_Review_image,,500,20000,.jpg,,,Review the faces (20 seconds),reviewCFMT.wav,,,,,,,395.83461594581604

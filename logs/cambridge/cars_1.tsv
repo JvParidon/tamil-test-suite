@@ -1,0 +1,12 @@
+type	block	randomize	condition1	trialNo	stim1	key	ITI	presTime	stimFormat	content	trialText	trialAudio	keyboard	keypress	RT	ACC	t
+instructions	1						500			Memorize the car in the next three images.<br><br>A test will follow.<br><br>press ENTER to begin.		practice-instructions_CCMT.wav					16.366204977035522
+learn	1				prac_v1		500	3000	.jpg		Practice						19.86353898048401
+learn	1				prac_v2		500	3000	.jpg		Practice						23.36514902114868
+learn	1				prac_v3		500	3000	.jpg		Practice						26.8669650554657
+practice	1				practice_v1	1	500		.jpg		Which car did you just view? There is only one correct answer. Press 1	practice-question.wav	1 2 3	2	3.2666711807250977	0	30.649266004562378
+practice	1				practice_v3	1	500		.jpg		Which car did you just view? There is only one correct answer. Press 1	practice-question.wav	1 2 3	3	0.6587460041046143	0	31.815886974334717
+practice	1				practice_v2	2	500		.jpg		Which car did you just view? There is only one correct answer. Press 1	practice-question.wav	1 2 3	1	0.9469821453094482	0	33.28238606452942
+instructions	1						500			These were the practice trials.<br><br>Great! Let's go on and do the actual test.<br><br>In this test		memorize_the_following_car_CCMT.wav					39.00210404396057
+learn	1				Slide1		500	3000	.jpg		Memorize						42.56276512145996
+learn	1				Slide2		500	3000	.jpg		Memorize						46.036526918411255
+learn	1				Slide3		500	3000	.jpg		Memorize						49.508240938186646
