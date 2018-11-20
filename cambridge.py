@@ -1,30 +1,29 @@
 import csv
 import random
-#import soundfile as sf
-#import sounddevice as sd
+import audio
 from psychopy import prefs
 prefs.general['audioLib'] = ['pygame']
-from psychopy import core, visual, event, sound
+from psychopy import core, visual, event
 
 
 class Experiment(object):
 
 
-    def __init__(self, pp, category, fps=60.0):
-        self.pp = pp
+    def __init__(self, category, pp_info, fps=60.0):
+        self.pp_info = pp_info
         self.fps = fps
         self.category = category
         # set up file paths, etc.
         self.trials_fname = 'trial_structure/cambridge/' + category + '.tsv'
-        self.log_fname = 'logs/cambridge/' + category + '_' + pp + '.tsv'
+        self.log_fname = 'logs/cambridge/' + category + '_' + pp_info['number'] + '_' + pp_info['literate'] + '.tsv'
         self.stimuli_folder = 'stimuli/cambridge/' + category + '/'
         self.instructions_folder = 'instructions/cambridge/' + category + '/'
 
 
     def run(self):
         # set up presentation window color, and size
-        bgcolor = 'black' if category != 'cars' else 'white'
-        txtcolor = 'white' if category != 'cars' else 'black'
+        bgcolor = 'black' if self.category != 'cars' else 'white'
+        txtcolor = 'white' if self.category != 'cars' else 'black'
         #self.win = visual.Window(fullscr=True, color=bgcolor)
         self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
 
@@ -45,7 +44,7 @@ class Experiment(object):
             trials = csv.DictReader(trial_file, delimiter='\t')
 
             # set up log file
-            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't']
+            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't'] + self.pp_info.keys()
             log = csv.DictWriter(log_file, fieldnames=log_fields, delimiter='\t')
             log.writeheader()
 
@@ -53,15 +52,17 @@ class Experiment(object):
             blocks = {}
             self.instructions = {}
             for trial in trials:
+                trial.update(self.pp_info)
                 if (trial['trialAudio'] != '') and (trial['trialAudio'] not in self.instructions.keys()):
-                    self.instructions[trial['trialAudio']] = sound.Sound(self.instructions_folder + trial['trialAudio'])
+                    #self.instructions[trial['trialAudio']] = sound.Sound(self.instructions_folder + trial['trialAudio'])
+                    self.instructions[trial['trialAudio']] = audio.read(self.instructions_folder + trial['trialAudio'])
                 if trial['block'] not in blocks.keys():
                     blocks[trial['block']] = [trial]
                 else:
                     blocks[trial['block']].append(trial)
 
             # present the trials
-            random.seed(self.pp)
+            random.seed(int(self.pp_info['number']))
             for block_number in sorted(blocks.keys()):
                 trials = blocks[block_number]
                 if trials[0]['randomize'] == 'yes':
@@ -71,6 +72,8 @@ class Experiment(object):
                     trial = self.present_trial(trial)  # present the trial
                     trial['t'] = self.expclock.getTime()
                     log.writerow(trial)  # log the trial data
+
+            self.win.close()
 
 
     # trial subroutine
@@ -82,7 +85,8 @@ class Experiment(object):
         self.isi.complete()
         self.win.flip()
         if trial['trialAudio'] != '':
-            self.instructions[trial['trialAudio']].play()
+            #self.instructions[trial['trialAudio']].play()
+            audio.play(self.instructions[trial['trialAudio']], wait=False)
         if trial['keyboard'] != '':
             keys = event.waitKeys(keyList=['escape'] + trial['keyboard'].split(' '), timeStamped=self.clock)
             trial['keypress'], trial['RT'] = keys[0]
@@ -93,12 +97,14 @@ class Experiment(object):
             else:
                 trial['ACC'] = 0
             if trial['trialAudio'] != '':
-                self.instructions[trial['trialAudio']].stop()
+                #self.instructions[trial['trialAudio']].stop()
+                audio.stop()
         else:
             if trial['presTime'] != '':
                 core.wait(float(trial['presTime']) / 1000 - self.frame_dur)
             else:
-                core.wait(self.instructions[trial['trialAudio']].getDuration())
+                core.wait(len(self.instructions[trial['trialAudio']]) / 44100.0)
+                #core.wait(self.instructions[trial['trialAudio']].getDuration())
         self.win.callOnFlip(self.isi.start, float(trial['ITI']) / 1000 - self.frame_dur)
         # flip buffer again and start ISI timer
         self.win.flip()
@@ -106,6 +112,7 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
+    '''
     category_selected = False
     while category_selected is False:
         category = raw_input('What category of picture recognition do you want to test? (faces, cars, or bikes)\n')
@@ -116,4 +123,10 @@ if __name__ == '__main__':
     pp = raw_input('Participant number: ')
     pp_name = raw_input('Participant name: ')
     pp_age = raw_input('Participant age: ')
-    Experiment(pp, category).run()
+    '''
+    pp = {}
+    pp['number'] = '1'
+    pp['age'] = '1'
+    pp['literate'] = 'no'
+    category = 'faces'
+    Experiment(category, pp).run()

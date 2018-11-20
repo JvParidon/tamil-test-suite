@@ -1,11 +1,9 @@
-# will contain routines for presenting visual illusion stimuli
 import csv
 import random
-#import soundfile as sf
-#import sounddevice as sd
+import audio
 from psychopy import prefs
 prefs.general['audioLib'] = ['pygame']
-from psychopy import core, visual, event, sound
+from psychopy import core, visual, event
 
 
 class Experiment(object):
@@ -36,10 +34,6 @@ class Experiment(object):
         self.isi = core.StaticPeriod()
         self.isi.start(.5)
 
-        # set sound defaults
-        #sd.default.samplerate = 44100
-        #sd.default.channels = 2
-
         # various stimulus presentation boxes for text and images
         self.message = visual.TextStim(self.win, color=txtcolor)
         self.message.wrapWidth = 1.5
@@ -62,7 +56,7 @@ class Experiment(object):
             self.instructions = {}
             for trial in trials:
                 if (trial['trialAudio'] != '') and (trial['trialAudio'] not in self.instructions.keys()):
-                    self.instructions[trial['trialAudio']] = sound.Sound(self.instructions_folder + trial['trialAudio'])
+                    self.instructions[trial['trialAudio']] = audio.read(self.instructions_folder + trial['trialAudio'])
                 if trial['block'] not in blocks.keys():
                     blocks[trial['block']] = [trial]
                 else:

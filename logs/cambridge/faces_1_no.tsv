@@ -1,0 +1,10 @@
+type	block	randomize	condition1	trialNo	stim1	key	ITI	presTime	stimFormat	title	content	trialText	trialAudio	keyboard	keypress	RT	ACC	t	age	number	literate
+instructions	1						500			Practice	Memorize the face in the next three images.<br><br>A test will follow.<br><br>press ENTER to begin.		CFMT-Practice_intro.wav					17.134939908981323	1	1	no
+learn	1				bart_left		500	3000	.jpg			Practice						20.63326597213745	1	1	no
+learn	1				bart_straight		500	3000	.jpg			Practice						24.132336854934692	1	1	no
+learn	1				bart_right		500	3000	.jpg			Practice						27.63485097885132	1	1	no
+practice	1				pract_left	1	500		.jpg			Which face did you just view? There is only one correct answer. Press 1	which_face_did_you_just_see.wav	1 2 3	2	0.7229900360107422	0	29.002049922943115	1	1	no
+practice	1				pract_right	2	500		.jpg			Which face did you just view? There is only one correct answer. Press 1	which_face_did_you_just_see.wav	1 2 3	1	0.7595858573913574	0	30.402484893798828	1	1	no
+practice	1				pract_straight	2	500		.jpg			Which face did you just view? There is only one correct answer. Press 1	which_face_did_you_just_see.wav	1 2 3	2	0.6415340900421143	1	31.685230016708374	1	1	no
+instructions	1						500				These were the practice trials.<br><br>Great! Let's go on and do the actual test.<br><br>In this test		memorizefollowingCFMT.wav					41.63501787185669	1	1	no
+learn	1				Bob_left_study		500	3000	.jpg			Memorize						45.13406682014465	1	1	no
