@@ -10,11 +10,11 @@ class Experiment(object):
 
 
     def __init__(self, pp, fps=60.0):
-        self.pp = pp
+        self.pp = pp['number']
         self.fps = fps
         # set up file paths, etc.
         self.trials_fname = 'trial_structure/illusions/illusions.tsv'
-        self.log_fname = 'logs/illusions/' + pp + '.tsv'
+        self.log_fname = 'logs/illusions/' + pp['literate'] + '_' + pp['number'] + '.tsv'
         self.stimuli_folder = 'stimuli/illusions/'
         self.instructions_folder = 'instructions/illusions/'
 
@@ -185,7 +185,4 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    pp = raw_input('Participant number: ')
-    pp_name = raw_input('Participant name: ')
-    pp_age = raw_input('Participant age: ')
-    Experiment(pp).run()
+    Experiment({'literate': 'no', 'age': '1', 'number': '1'}).run()

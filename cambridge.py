@@ -35,8 +35,9 @@ class Experiment(object):
         self.isi = core.StaticPeriod()
         self.isi.start(.5)
 
-        # stimulus presentation box for images
+        # stimulus presentation boxes for images and text
         self.image = visual.ImageStim(self.win)
+        self.text = visual.TextStim(self.win)
 
         # actually run the experiment routines
         with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w') as log_file:
@@ -81,6 +82,9 @@ class Experiment(object):
         if trial['stim1'] != '':
             self.image.image = self.stimuli_folder + trial['stim1'] + trial['stimFormat']
             self.image.draw()
+        elif trial['text'] != '':
+            self.text.text = trial['text']
+            self.text.draw()
         self.win.callOnFlip(self.clock.reset)
         self.isi.complete()
         self.win.flip()
@@ -102,7 +106,7 @@ class Experiment(object):
         else:
             if trial['presTime'] != '':
                 core.wait(float(trial['presTime']) / 1000 - self.frame_dur)
-            else:
+            elif trial['trialAudio'] != '':
                 core.wait(len(self.instructions[trial['trialAudio']]) / 44100.0)
                 #core.wait(self.instructions[trial['trialAudio']].getDuration())
         self.win.callOnFlip(self.isi.start, float(trial['ITI']) / 1000 - self.frame_dur)
@@ -112,18 +116,6 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    '''
-    category_selected = False
-    while category_selected is False:
-        category = raw_input('What category of picture recognition do you want to test? (faces, cars, or bikes)\n')
-        if category in ['faces', 'cars', 'bikes']:
-            category_selected = True
-        else:
-            print(category + ' is not a valid picture category, try again')
-    pp = raw_input('Participant number: ')
-    pp_name = raw_input('Participant name: ')
-    pp_age = raw_input('Participant age: ')
-    '''
     pp = {}
     pp['number'] = '1'
     pp['age'] = '1'
