@@ -1,0 +1,7 @@
+type	block	randomize	condition1	trialNo	stim1	key	ITI	presTime	stimFormat	text	content	trialText	trialAudio	keyboard	keypress	RT	ACC	t	age	literate	number
+pause	1						500			||				return	return	10.961657047271729	0	11.505597114562988	1	no	1
+instructions	1						500				Memorize the car in the next three images.<br><br>A test will follow.<br><br>press ENTER to begin.		practice-instructions_CCMT.wav					27.870371103286743	1	no	1
+pause	1						500			||				return	return	28.90972590446472	0	57.28835606575012	1	no	1
+learn	1				prac_v1		500	3000	.jpg			Practice						60.791325092315674	1	no	1
+learn	1				prac_v2		500	3000	.jpg			Practice						64.29177713394165	1	no	1
+learn	1				prac_v3		500	3000	.jpg			Practice						67.79306602478027	1	no	1

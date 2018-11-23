@@ -1,0 +1,2 @@
+block	randomize	Trialnumber	type	IllusionType	Condition	Picture	Question_display1	keyboard	key	trialAudio	presTime	ITI	answer_type	ButtonPress	keypress	RT	ACC	t
+1	yes	18	test	colour	illusion	cornsweet.png	Do the two rectangles on the side of the black bar have the same colour?	1 2	1	cornsweetQ.wav	5000	500	yes-no		1	3.479267120361328	1	4.01688289642334

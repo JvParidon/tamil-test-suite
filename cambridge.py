@@ -37,7 +37,7 @@ class Experiment(object):
 
         # stimulus presentation boxes for images and text
         self.image = visual.ImageStim(self.win)
-        self.text = visual.TextStim(self.win)
+        self.text = visual.TextStim(self.win, color=txtcolor)
 
         # actually run the experiment routines
         with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w') as log_file:

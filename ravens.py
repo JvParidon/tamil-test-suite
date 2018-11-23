@@ -30,7 +30,7 @@ class Experiment(object):
         self.title = visual.TextStim(self.win, pos=(0, .8), color=txtcolor)
         self.title.wrapWidth = 1.5
         #self.title.setAutoLog()  # is this still necessary?
-        self.image = visual.ImageStim(self.win)
+        self.image = visual.ImageStim(self.win, size=(.6, 1))
 
         # actually run the experiment routines
         self.skipped = []
