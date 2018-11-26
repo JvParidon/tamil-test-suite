@@ -116,9 +116,4 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    pp = {}
-    pp['number'] = '1'
-    pp['age'] = '1'
-    pp['literate'] = 'no'
-    category = 'faces'
-    Experiment(category, pp).run()
+    Experiment('faces', {'literate': 'no', 'age': '1', 'number': '1'}).run()

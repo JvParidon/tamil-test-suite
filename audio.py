@@ -25,10 +25,3 @@ def write(fname, samples):
 
 def stop():
     sd.stop()
-
-if __name__ == '__main__':
-    print('recording')
-    samples = record(5)
-    print('playing')
-    play(samples)
-    write('sftest.wav', samples)

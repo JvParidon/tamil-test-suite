@@ -1,6 +1,7 @@
 from psychopy import prefs
 prefs.general['audioLib'] = ['pygame']
 from psychopy import core, visual, event, gui
+import subprocess as sp
 import reading
 import cambridge
 import illusions
@@ -67,7 +68,7 @@ def run(pp_info):
         [repetition, 'pseudoword'],
         [span, 'forward'],
         [span, 'backward'],
-        [ravens]
+        [ravens, 'a']
     ]
 
     current = check_current()

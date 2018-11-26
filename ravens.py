@@ -1,17 +1,21 @@
 import csv
+import audio
+from psychopy import prefs
+prefs.general['audioLib'] = ['pygame']
 from psychopy import core, visual, event
 
 
 class Experiment(object):
 
 
-    def __init__(self, pp, fps=60.0):
-        self.pp = pp
+    def __init__(self, subset, pp_info, fps=60.0):
+        self.pp_info = pp_info
         self.fps = fps
         # set up file paths, etc.
-        self.trials_fname = 'trial_structure/ravens/ravens.tsv'
-        self.log_fname = 'logs/ravens/ravens_' + pp + '.tsv'
+        self.trials_fname = 'trial_structure/ravens/' + subset + '.tsv'
+        self.log_fname = 'logs/ravens/' + subset + '_' + pp_info['number'] + '_' + pp_info['literate'] + '.tsv'
         self.stimuli_folder = 'stimuli/ravens/'
+        self.instructions_folder = 'instructions/ravens/'
 
 
     def run(self):
@@ -27,7 +31,7 @@ class Experiment(object):
         self.expclock = core.Clock()  # whole experiment timer
 
         # various stimulus presentation boxes for text and images
-        self.title = visual.TextStim(self.win, pos=(0, .8), color=txtcolor)
+        self.title = visual.TextStim(self.win, color=txtcolor)
         self.title.wrapWidth = 1.5
         #self.title.setAutoLog()  # is this still necessary?
         self.image = visual.ImageStim(self.win, size=(.6, 1))
@@ -100,6 +104,7 @@ class Experiment(object):
         self.title.draw()
         self.win.callOnFlip(self.clock.reset)
         self.win.flip()
+        audio.play(audio.read(self.instructions_folder + 'ravens.wav'), wait=True)
         keys = event.waitKeys(keyList=['escape'] + trial['keyboard'].split(','), timeStamped=self.clock)
         trial['keypress'], trial['RT'] = keys[0]
         if trial['keypress'] == 'escape':
@@ -143,7 +148,4 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    pp = raw_input('Participant number: ')
-    pp_name = raw_input('Participant name: ')
-    pp_age = raw_input('Participant age: ')
-    Experiment(pp).run()
+    Experiment('a', {'literate': 'no', 'age': '1', 'number': '1'}).run()
