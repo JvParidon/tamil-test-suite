@@ -16,7 +16,7 @@ class Experiment(object):
         # set up file paths, etc.
         self.trials_fname = 'trial_structure/cambridge/' + category + '.tsv'
         self.log_fname = 'logs/cambridge/' + category + '_' + pp_info['number'] + '_' + pp_info['literate'] + '.tsv'
-        self.stimuli_folder = 'stimuli/cambridge/' + category + '/'
+        self.stimuli_folder = 'stimuli/cambridge/' + category + '_color/'
         self.instructions_folder = 'instructions/cambridge/' + category + '/'
 
 

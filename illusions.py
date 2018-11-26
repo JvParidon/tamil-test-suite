@@ -21,8 +21,8 @@ class Experiment(object):
 
     def run(self):
         # set up presentation window color, and size
-        bgcolor = 'black'
-        txtcolor = 'white'
+        bgcolor = 'white'
+        txtcolor = 'black'
         #self.win = visual.Window(fullscr=True, color=bgcolor)
         self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
 
@@ -103,8 +103,6 @@ class Experiment(object):
         self.win.callOnFlip(self.clock.reset)
         self.isi.complete()
         self.win.flip()
-        if trial['trialAudio'] != '':
-            self.instructions[trial['trialAudio']].play()
         keys = event.waitKeys(keyList=['escape'] + trial['button1'].split(' '), timeStamped=self.clock)
         trial['keypress'], trial['RT'] = keys[0]
         if trial['keypress'] == 'escape':
@@ -170,6 +168,8 @@ class Experiment(object):
         self.win.callOnFlip(self.clock.reset)
         self.isi.complete()
         self.win.flip()
+        if trial['trialAudio'] != '':
+            audio.play(self.instructions[trial['trialAudio']])
         keys = event.waitKeys(keyList=['escape'] + trial['keyboard'].split(' '), timeStamped=self.clock)
         trial['keypress'], trial['RT'] = keys[0]
         if trial['keypress'] == 'escape':
