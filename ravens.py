@@ -59,8 +59,8 @@ class Experiment(object):
                 log.writerow(trial)  # log trial data
 
                 # check if the 20 minutes alotted for the Raven's have expired
-                if self.expclock.getTime() > 20 * 60.0:
-                    core.quit()
+                #if self.expclock.getTime() > 20 * 60.0:
+                #    core.quit()
 
             # run the skipped trials again
             while len(self.skipped) > 0:
@@ -74,8 +74,8 @@ class Experiment(object):
                 log.writerow(trial)  # log trial data
 
                 # check if the 20 minutes alotted for the Raven's have expired
-                if self.expclock.getTime() > 20 * 60.0:
-                    core.quit()
+                #if self.expclock.getTime() > 20 * 60.0:
+                #    core.quit()
 
                 self.skipped.pop(0)  # remove repeated trial from the repetition queue
 

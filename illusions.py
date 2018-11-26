@@ -14,7 +14,8 @@ class Experiment(object):
         self.fps = fps
         # set up file paths, etc.
         self.trials_fname = 'trial_structure/illusions/illusions.tsv'
-        self.log_fname = 'logs/illusions/' + pp['literate'] + '_' + pp['number'] + '.tsv'
+        self.log_prefix = 'logs/illusions/' + pp['literate'] + '_' + pp['number']
+        self.log_fname = self.log_prefix + '.tsv'
         self.stimuli_folder = 'stimuli/illusions/'
         self.instructions_folder = 'instructions/illusions/'
 
@@ -35,6 +36,7 @@ class Experiment(object):
         self.isi.start(.5)
 
         # various stimulus presentation boxes for text and images
+        self.text = visual.TextStim(self.win, color=txtcolor)
         self.message = visual.TextStim(self.win, color=txtcolor)
         self.message.wrapWidth = 1.5
         self.title = visual.TextStim(self.win, pos=(0, .8), color=txtcolor)
@@ -61,6 +63,12 @@ class Experiment(object):
                     blocks[trial['block']] = [trial]
                 else:
                     blocks[trial['block']].append(trial)
+
+            for i in range(5, 0, -1):
+                self.text.text = '+' * (2 * i - 1)
+                self.text.draw()
+                self.win.flip()
+                core.wait(1)
 
             # present the trials
             random.seed(self.pp)
@@ -169,15 +177,18 @@ class Experiment(object):
         self.isi.complete()
         self.win.flip()
         if trial['trialAudio'] != '':
-            audio.play(self.instructions[trial['trialAudio']])
-        keys = event.waitKeys(keyList=['escape'] + trial['keyboard'].split(' '), timeStamped=self.clock)
-        trial['keypress'], trial['RT'] = keys[0]
-        if trial['keypress'] == 'escape':
-            core.quit()
-        if trial['keypress'] == trial['key']:
-            trial['ACC'] = 1
+            audio.play(self.instructions[trial['trialAudio']], wait=True)
+        if trial['answer_type'] == 'spoken':
+            audio.write(self.log_prefix + trial['trialAudio'], audio.record(25, wait=True))
         else:
-            trial['ACC'] = 0
+            keys = event.waitKeys(keyList=['escape'] + trial['keyboard'].split(' '), timeStamped=self.clock)
+            trial['keypress'], trial['RT'] = keys[0]
+            if trial['keypress'] == 'escape':
+                core.quit()
+            if trial['keypress'] == trial['key']:
+                trial['ACC'] = 1
+            else:
+                trial['ACC'] = 0
         self.win.callOnFlip(self.isi.start, float(trial['ITI']) / 1000 - self.frame_dur)
         # flip buffer again and start ISI timer
         self.win.flip()

@@ -1,6 +1,7 @@
 import csv
 import random
 import audio
+import os
 from psychopy import prefs
 prefs.general['audioLib'] = ['pygame']
 from psychopy import core, visual, event
@@ -39,6 +40,14 @@ class Experiment(object):
         self.image = visual.ImageStim(self.win)
         self.text = visual.TextStim(self.win, color=txtcolor)
 
+        # check if participant number has not been previously used
+        if os.path.isfile(self.log_fname):
+            self.text.text = 'Error: participant number has been used previously,\nplease wait and then retry'
+            self.text.draw()
+            self.win.flip()
+            core.wait(3)
+            core.quit()
+
         # actually run the experiment routines
         with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w') as log_file:
             # read trial structure
@@ -61,6 +70,12 @@ class Experiment(object):
                     blocks[trial['block']] = [trial]
                 else:
                     blocks[trial['block']].append(trial)
+
+            for i in range(5, 0, -1):
+                self.text.text = '+' * (2 * i - 1)
+                self.text.draw()
+                self.win.flip()
+                core.wait(1)
 
             # present the trials
             random.seed(int(self.pp_info['number']))
