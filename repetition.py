@@ -2,6 +2,7 @@ import audio
 from psychopy import prefs
 prefs.general['audioLib'] = ['pygame']
 from psychopy import core, visual, event
+from test_tools import pause, get_pp_info
 
 # experiment routines for presenting word reading stimuli and recording spoken responses
 
@@ -52,4 +53,7 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    Experiment('word', {'literate': 'no', 'age': '1', 'number': '1'}).run()
+    pp_info = get_pp_info()
+    for mode in ['word', 'nonword']:
+        pause()
+        Experiment(mode, pp_info).run()

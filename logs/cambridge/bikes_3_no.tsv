@@ -1,5 +1,0 @@
-type	block	randomize	stim1	key	ITI	presTime	stimFormat	text	content	trialText	trialAudio	keyboard	keypress	RT	ACC	t	age	literate	number
-pause	1				500			||	Memorize the bike in the next three images.<br><br>A test will follow.<br><br>Press ENTER to begin.		CBMT_practice_intro.wav	return	return	2.0732171535491943	0	2.7326290607452393	1	no	3
-learn	1		bart_left		500	3000	.jpg			Practice						6.232248067855835	1	no	3
-learn	1		bart_straight		500	3000	.jpg			Practice						9.73105001449585	1	no	3
-learn	1		bart_right		500	3000	.jpg			Practice						13.233431100845337	1	no	3

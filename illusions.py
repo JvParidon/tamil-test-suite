@@ -4,17 +4,18 @@ import audio
 from psychopy import prefs
 prefs.general['audioLib'] = ['pygame']
 from psychopy import core, visual, event
+from test_tools import pause, get_pp_info
 
 
 class Experiment(object):
 
 
-    def __init__(self, pp, fps=60.0):
-        self.pp = pp['number']
+    def __init__(self, pp_info, fps=60.0):
+        self.pp_info = pp_info
         self.fps = fps
         # set up file paths, etc.
         self.trials_fname = 'trial_structure/illusions/illusions.tsv'
-        self.log_prefix = 'logs/illusions/' + pp['literate'] + '_' + pp['number']
+        self.log_prefix = 'logs/illusions/' + pp_info['literate'] + '_' + pp_info['number']
         self.log_fname = self.log_prefix + '.tsv'
         self.stimuli_folder = 'stimuli/illusions/'
         self.instructions_folder = 'instructions/illusions/'
@@ -49,7 +50,7 @@ class Experiment(object):
             trials = csv.DictReader(trial_file, delimiter='\t')
 
             # set up log file
-            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't']
+            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't'] + list(self.pp_info.keys())
             log = csv.DictWriter(log_file, fieldnames=log_fields, delimiter='\t')
             log.writeheader()
 
@@ -57,6 +58,7 @@ class Experiment(object):
             blocks = {}
             self.instructions = {}
             for trial in trials:
+                trial.update(self.pp_info)
                 if (trial['trialAudio'] != '') and (trial['trialAudio'] not in self.instructions.keys()):
                     self.instructions[trial['trialAudio']] = audio.read(self.instructions_folder + trial['trialAudio'])
                 if trial['block'] not in blocks.keys():
@@ -71,7 +73,7 @@ class Experiment(object):
                 core.wait(1)
 
             # present the trials
-            random.seed(self.pp)
+            random.seed(self.pp_info['number'])
             for block_number in sorted(blocks.keys()):
                 trials = blocks[block_number]
                 if trials[0]['randomize'] == 'yes':
@@ -196,4 +198,5 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    Experiment({'literate': 'no', 'age': '1', 'number': '1'}).run()
+    pp_info = get_pp_info()
+    Experiment(pp_info).run()

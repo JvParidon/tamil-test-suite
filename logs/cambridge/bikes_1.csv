@@ -1,6 +1,0 @@
-type,block,randomize,stim1,key,ITI,presTime,stimFormat,title,content,trialText,button1,feedbackCorrect,feedbackIncorrect,keyboard,keypress,RT,ACC,t
-instructions,1,,,,500,,,Cambridge Bike Memory Test for Children," Original 6 <br><br> The Social Perception Lab, 2012",,return,,,,return,1.0486891269683838,,1.582284927368164
-instructions,1,,,,500,,,Practice,Memorize the bike in the next three images.<br><br>A test will follow.<br><br>Press ENTER to begin.,,return,,,,return,0.73421311378479,,2.8337738513946533
-learn,1,,bart_left,,500,3000,.jpg,,,Practice,,,,,,,,6.331666946411133
-learn,1,,bart_straight,,500,3000,.jpg,,,Practice,,,,,,,,9.833958864212036
-learn,1,,bart_right,,500,3000,.jpg,,,Practice,,,,,,,,13.333168029785156

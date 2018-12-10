@@ -1,3 +1,0 @@
-block	randomize	Trialnumber	type	IllusionType	Condition	Picture	Question_display1	keyboard	key	title	trialAudio	presTime	ITI	answer_type	ButtonPress	keypress	RT	ACC	t
-1		23	test	ambiguous	illusion	Kaniza.png	Can you notice one triangle?	2 minus	1		kaniza1.wav	5000	500	yes-no		minus	2.984771966934204	0	8.41741681098938
-1		24	test	ambiguous	illusion	Kaniza.png	Can you notice another triangle?	2 minus	1		kaniza2.wav	5000	500	yes-no		minus	5.052961111068726	0	13.98532485961914

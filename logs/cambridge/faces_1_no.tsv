@@ -1,8 +1,0 @@
-type	block	randomize	condition1	trialNo	stim1	key	ITI	presTime	stimFormat	text	content	trialText	trialAudio	keyboard	keypress	RT	ACC	t	literate	age	number
-pause	1						500			||	Memorize the face in the next three images.<br><br>A test will follow.<br><br>press ENTER to begin.		CFMT-Practice_intro.wav	return	return	21.80591320991516	0	22.451908111572266	no	1	1
-learn	1				bart_left		500	3000	.jpg			Practice						25.937551975250244	no	1	1
-learn	1				bart_straight		500	3000	.jpg			Practice						29.409334182739258	no	1	1
-learn	1				bart_right		500	3000	.jpg			Practice						32.88542318344116	no	1	1
-practice	1				pract_left	2	500		.jpg			Which face did you just view? There is only one correct answer. Press 1	which_face_did_you_just_see.wav	2 5 8	2	3.2406740188598633	1	36.76772499084473	no	1	1
-practice	1				pract_right	5	500		.jpg			Which face did you just view? There is only one correct answer. Press 1	which_face_did_you_just_see.wav	2 5 8	8	0.8610720634460449	0	38.28373599052429	no	1	1
-practice	1				pract_straight	5	500		.jpg			Which face did you just view? There is only one correct answer. Press 1	which_face_did_you_just_see.wav	2 5 8	5	0.7695131301879883	1	39.703092098236084	no	1	1

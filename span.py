@@ -5,6 +5,7 @@ from psychopy import core, visual, event
 import random
 import os
 import csv
+from test_tools import pause, get_pp_info
 
 
 class Experiment(object):
@@ -62,4 +63,7 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    Experiment('forward', {'literate': 'no', 'age': '1', 'number': '1'}).run()
+    pp_info = get_pp_info()
+    for mode in ['forward', 'backward']:
+        pause()
+        Experiment(mode, pp_info).run()

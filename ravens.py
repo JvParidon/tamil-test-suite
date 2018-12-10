@@ -3,6 +3,7 @@ import audio
 from psychopy import prefs
 prefs.general['audioLib'] = ['pygame']
 from psychopy import core, visual, event
+from test_tools import pause, get_pp_info
 
 
 class Experiment(object):
@@ -14,7 +15,7 @@ class Experiment(object):
         # set up file paths, etc.
         self.trials_fname = 'trial_structure/ravens/' + subset + '.tsv'
         self.log_fname = 'logs/ravens/' + subset + '_' + pp_info['number'] + '_' + pp_info['literate'] + '.tsv'
-        self.stimuli_folder = 'stimuli/ravens/'
+        self.stimuli_folder = 'stimuli/ravens_color/'
         self.instructions_folder = 'instructions/ravens/'
 
 
@@ -43,12 +44,13 @@ class Experiment(object):
             trials = csv.DictReader(trial_file, delimiter='\t')
 
             # set up log file
-            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't', 'skipped']
+            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't', 'skipped'] + list(self.pp_info.keys())
             log = csv.DictWriter(log_file, fieldnames=log_fields, delimiter='\t')
             log.writeheader()
 
             # present the trials
             for trial in trials:
+                trial.update(self.pp_info)
                 self.clock.reset()  # reset the trial clock
                 trial = self.present_trial(trial)  # present the trial
 
@@ -148,4 +150,7 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    Experiment('a', {'literate': 'no', 'age': '1', 'number': '1'}).run()
+    pp_info = get_pp_info()
+    for mode in ['a', 'b']:
+        pause()
+        Experiment(mode, pp_info).run()

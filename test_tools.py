@@ -18,7 +18,6 @@ def get_pp_info():
     pp_info = {
         'literate': '',
         'number': '',
-        'age': ''
     }
     for key in sorted(pp_info.keys()):
         waiting = True

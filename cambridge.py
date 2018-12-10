@@ -5,6 +5,7 @@ import os
 from psychopy import prefs
 prefs.general['audioLib'] = ['pygame']
 from psychopy import core, visual, event
+from test_tools import pause, get_pp_info
 
 
 class Experiment(object):
@@ -54,7 +55,7 @@ class Experiment(object):
             trials = csv.DictReader(trial_file, delimiter='\t')
 
             # set up log file
-            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't'] + self.pp_info.keys()
+            log_fields = trials.fieldnames + ['keypress', 'RT', 'ACC', 't'] + list(self.pp_info.keys())
             log = csv.DictWriter(log_file, fieldnames=log_fields, delimiter='\t')
             log.writeheader()
 
@@ -131,4 +132,7 @@ class Experiment(object):
 
 
 if __name__ == '__main__':
-    Experiment('faces', {'literate': 'no', 'age': '1', 'number': '1'}).run()
+        pp_info = get_pp_info()
+        for mode in ['bikes', 'faces', 'cars']:
+            pause()
+            Experiment(mode, pp_info).run()

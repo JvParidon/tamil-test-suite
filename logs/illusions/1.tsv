@@ -1,3 +1,0 @@
-block	randomize	Trialnumber	type	IllusionType	Condition	Picture	Question_display1	keyboard	key	trialAudio	presTime	ITI	answer_type	ButtonPress	keypress	RT	ACC	t
-1	yes	18	test	colour	illusion	cornsweet.png	Do the two rectangles on the side of the black bar have the same colour?	1 2	1	cornsweetQ.wav	5000	500	yes-no		1	9.069900035858154	1	9.60238790512085
-1	yes	9	test	shape	illusion	Orbison.png	Does the red figure look like an elongated square?	1 2	1	orbisonQC.wav	5000	500	yes-no		2	0.7105398178100586	0	10.835466861724854
