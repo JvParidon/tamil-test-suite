@@ -14,7 +14,7 @@ class Experiment(object):
         self.pp_info = pp_info
         self.fps = fps
         # set up file paths, etc.
-        self.log_fname = 'logs/reading/' + mode + '_' + pp_info['number'] + '_' + pp_info['literate'] + '.wav'
+        self.log_fname = 'logs/reading/' + mode + '_' + pp_info['literate'] + '_' + pp_info['number'] + '.wav'
 
 
     def run(self):

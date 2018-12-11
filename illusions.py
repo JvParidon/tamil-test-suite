@@ -45,7 +45,7 @@ class Experiment(object):
         self.image = visual.ImageStim(self.win)
 
         # actually run the experiment routines
-        with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w') as log_file:
+        with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w', newline='') as log_file:
             # read trial structure
             trials = csv.DictReader(trial_file, delimiter='\t')
 

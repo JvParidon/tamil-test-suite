@@ -16,7 +16,7 @@ class Experiment(object):
         # set up file paths, etc.
         self.instructions_folder = 'instructions/repetition/'
         self.stimuli_prefix = 'stimuli/repetition/' + mode + '/' + mode
-        self.log_prefix = 'logs/repetition/' + mode + '/' + pp_info['literate'] + '_' + pp_info['number'] + '_' + mode
+        self.log_prefix = 'logs/repetition/' + mode + '/' + mode + '_' + pp_info['literate'] + '_' + pp_info['number'] + '_'
 
 
     def run(self):

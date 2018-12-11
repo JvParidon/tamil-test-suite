@@ -14,7 +14,7 @@ class Experiment(object):
         self.fps = fps
         # set up file paths, etc.
         self.trials_fname = 'trial_structure/ravens/' + subset + '.tsv'
-        self.log_fname = 'logs/ravens/' + subset + '_' + pp_info['number'] + '_' + pp_info['literate'] + '.tsv'
+        self.log_fname = 'logs/ravens/' + subset + '_' + pp_info['literate'] + '_' + pp_info['number'] + '.tsv'
         self.stimuli_folder = 'stimuli/ravens_color/'
         self.instructions_folder = 'instructions/ravens/'
 
@@ -39,7 +39,7 @@ class Experiment(object):
 
         # actually run the experiment routines
         self.skipped = []
-        with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w') as log_file:
+        with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w', newline='') as log_file:
             # read trial structure
             trials = csv.DictReader(trial_file, delimiter='\t')
 

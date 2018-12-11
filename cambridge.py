@@ -17,7 +17,7 @@ class Experiment(object):
         self.category = category
         # set up file paths, etc.
         self.trials_fname = 'trial_structure/cambridge/' + category + '.tsv'
-        self.log_fname = 'logs/cambridge/' + category + '_' + pp_info['number'] + '_' + pp_info['literate'] + '.tsv'
+        self.log_fname = 'logs/cambridge/' + category + '_' + pp_info['literate'] + '_' + pp_info['number'] + '.tsv'
         self.stimuli_folder = 'stimuli/cambridge/' + category + '_color/'
         self.instructions_folder = 'instructions/cambridge/' + category + '/'
 
@@ -50,7 +50,7 @@ class Experiment(object):
             core.quit()
 
         # actually run the experiment routines
-        with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w') as log_file:
+        with open(self.trials_fname, 'rU') as trial_file, open(self.log_fname, 'w', newline='') as log_file:
             # read trial structure
             trials = csv.DictReader(trial_file, delimiter='\t')
 
@@ -65,7 +65,6 @@ class Experiment(object):
             for trial in trials:
                 trial.update(self.pp_info)
                 if (trial['trialAudio'] != '') and (trial['trialAudio'] not in self.instructions.keys()):
-                    #self.instructions[trial['trialAudio']] = sound.Sound(self.instructions_folder + trial['trialAudio'])
                     self.instructions[trial['trialAudio']] = audio.read(self.instructions_folder + trial['trialAudio'])
                 if trial['block'] not in blocks.keys():
                     blocks[trial['block']] = [trial]
