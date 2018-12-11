@@ -21,8 +21,8 @@ class Experiment(object):
         # set up presentation window color, and size
         bgcolor = 'black'
         txtcolor = 'white'
-        #self.win = visual.Window(fullscr=True, color=bgcolor)
-        self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
+        self.win = visual.Window(fullscr=True, color=bgcolor)
+        #self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
         self.text = visual.TextStim(self.win, color=txtcolor)
 
         for i in range(5, 0, -1):

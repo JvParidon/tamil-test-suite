@@ -23,8 +23,8 @@ class Experiment(object):
         # set up presentation window color, and size
         bgcolor = 'black'
         txtcolor = 'white'
-        #self.win = visual.Window(fullscr=True, color=bgcolor)
-        self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
+        self.win = visual.Window(fullscr=True, color=bgcolor)
+        #self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
         self.text = visual.TextStim(self.win, color=txtcolor)
 
         words = [audio.read(self.stimuli_prefix + str(i + 1) + '.wav') for i in range(24)]
@@ -46,7 +46,7 @@ class Experiment(object):
             self.win.flip()
             recordings += [audio.record(((len(word) / 44100) + 1), wait=True)]
 
-        for i in range(24):
+        for i in range(len(words)):
             audio.write(self.log_prefix + str(i + 1) + '.wav', recordings[i])
 
         self.win.close()
@@ -54,6 +54,6 @@ class Experiment(object):
 
 if __name__ == '__main__':
     pp_info = get_pp_info()
-    for mode in ['word', 'nonword']:
+    for mode in ['word', 'pseudoword']:
         pause()
         Experiment(mode, pp_info).run()

@@ -26,8 +26,8 @@ class Experiment(object):
         # set up presentation window color, and size
         bgcolor = 'black' if self.category != 'cars' else 'white'
         txtcolor = 'white' if self.category != 'cars' else 'black'
-        #self.win = visual.Window(fullscr=True, color=bgcolor)
-        self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
+        self.win = visual.Window(fullscr=True, color=bgcolor)
+        #self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
 
         # set up timing related stuff
         self.frame_dur = 1.0 / self.fps

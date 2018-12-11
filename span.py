@@ -26,13 +26,13 @@ class Experiment(object):
         # set up presentation window color, and size
         bgcolor = 'black'
         txtcolor = 'white'
-        #self.win = visual.Window(fullscr=True, color=bgcolor)
-        self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
+        self.win = visual.Window(fullscr=True, color=bgcolor)
+        #self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
         self.text = visual.TextStim(self.win, color=txtcolor)
 
         with open(self.trials_fname, 'rU') as trial_file:
             # read trial structure
-            trials = csv.DictReader(trial_file, delimiter='\t')
+            trials = list(csv.DictReader(trial_file, delimiter='\t'))
 
             # preload stimuli
             stimuli = [audio.read(self.stimuli_folder + trial['stimulus']) for trial in trials]

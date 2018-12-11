@@ -3,7 +3,8 @@ prefs.general['audioLib'] = ['pygame']
 from psychopy import core, visual, event, gui
 
 def pause():
-    win = visual.Window((1200, 900), color='black')
+    win = visual.Window(fullscr=True, color='black')
+    #win = visual.Window((1200, 900), color='black')
     message = visual.TextStim(win, '||', color='white')
     message.draw()
     win.flip()
@@ -13,7 +14,8 @@ def pause():
     win.close()
 
 def get_pp_info():
-    win = visual.Window((1200, 900), color='black')
+    win = visual.Window(fullscr=True, color='black')
+    #win = visual.Window((1200, 900), color='black')
     message = visual.TextStim(win, color='white')
     pp_info = {
         'literate': '',
@@ -28,6 +30,8 @@ def get_pp_info():
             keypress = event.waitKeys()
             if keypress[0] == 'return':
                 waiting = False
+            elif keypress[0] == 'backspace':
+                pp_info[key] = pp_info[key][:-1]
             else:
                 pp_info[key] += keypress[0]
     win.close()

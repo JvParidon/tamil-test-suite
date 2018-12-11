@@ -25,8 +25,8 @@ class Experiment(object):
         # set up presentation window color, and size
         bgcolor = 'white'
         txtcolor = 'black'
-        #self.win = visual.Window(fullscr=True, color=bgcolor)
-        self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
+        self.win = visual.Window(fullscr=True, color=bgcolor)
+        #self.win = visual.Window((1200, 900), color=bgcolor)  # temporary presentation window setup, exchange for line above when running actual experiment
 
         # set up timing related stuff
         self.frame_dur = 1.0 / self.fps
@@ -181,7 +181,7 @@ class Experiment(object):
         if trial['trialAudio'] != '':
             audio.play(self.instructions[trial['trialAudio']], wait=True)
         if trial['answer_type'] == 'spoken':
-            audio.write(self.log_prefix + trial['trialAudio'], audio.record(25, wait=True))
+            audio.write(self.log_prefix + '_' + trial['Picture'][:-4] + '.wav', audio.record(25, wait=True))
         else:
             keys = event.waitKeys(keyList=['escape'] + trial['keyboard'].split(' '), timeStamped=self.clock)
             trial['keypress'], trial['RT'] = keys[0]
