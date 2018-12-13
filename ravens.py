@@ -80,6 +80,8 @@ class Experiment(object):
                 #    core.quit()
 
                 self.skipped.pop(0)  # remove repeated trial from the repetition queue
+                
+            self.win.close()
 
 
     # select the appriopriate trial subroutine

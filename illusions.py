@@ -83,6 +83,8 @@ class Experiment(object):
                     trial = self.present_trial(trial)  # present the trial
                     log.writerow(trial)  # log the trial data
 
+            self.win.close()
+
 
     # select the appriopriate trial subroutine
     def present_trial(self, trial):
