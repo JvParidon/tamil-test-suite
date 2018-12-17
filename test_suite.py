@@ -34,7 +34,8 @@ def run(pp_info):
         [repetition, 'pseudoword'],
         [span, 'forward'],
         [span, 'backward'],
-        [ravens, 'a']
+        [ravens, 'a'],
+        [ravens, 'b']
     ]
 
     current = check_current()
