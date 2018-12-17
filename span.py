@@ -55,6 +55,9 @@ class Experiment(object):
                 self.text.draw()
                 self.win.flip()
                 recordings += [audio.record((len(stimulus) / 44100.0) + 1, wait=True)]
+                keys = event.getKeys(['escape'])
+                if 'escape' in keys:
+                    break
 
             for i in range(len(recordings)):
                 audio.write(self.log_prefix + trials[i]['stimulus'], recordings[i])
